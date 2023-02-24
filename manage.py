@@ -1,6 +1,23 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+import streamlit.web.bootstrap
+from streamlit import config as _config
+from multiprocessing import Process
+
+def launch_streamlit():
+    dirname = os.path.join(
+        os.path.dirname(__file__),
+        'viz',
+        'streamlit_app',
+    )
+    filename = os.path.join(dirname, 'BuLiAn.py')
+
+    _config.set_option("server.headless", True)
+    args = []
+
+    #streamlit.cli.main_run(filename, args)
+    streamlit.web.bootstrap.run(filename,'',args, flag_options={})
 
 
 def main():
@@ -18,4 +35,7 @@ def main():
 
 
 if __name__ == '__main__':
+    p = Process(target=launch_streamlit)
+    p.start()
     main()
+    p.join()
