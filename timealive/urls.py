@@ -26,6 +26,10 @@ urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
     path('', TemplateView.as_view(
         template_name='home.html',
-        extra_context={'is_home': True, 'is_viz': False, 'is_schedule': False},
+        extra_context={
+            'is_home': True,
+            'is_viz': False,
+            'is_schedule': False,
+        },
     ), name='home'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
