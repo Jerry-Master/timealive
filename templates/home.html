@@ -3,6 +3,28 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
+
+<div class="header">
+  <a href="#default" class="logo">CompanyLogo</a>
+  <div class="header-right">
+    {% if is_home %}
+      <a class="active" href="/">Home</a>
+    {% else %}
+      <a href="/">Home</a>
+    {% endif %}
+    {% if is_viz %}
+      <a class="active" href="/viz">Viz</a>
+    {% else %}
+      <a href="/viz">Viz</a>
+    {% endif %}
+    {% if is_schedule %}
+      <a class="active" href="/schedule">Schedule</a>
+    {% else %}
+      <a href="/schedule">Schedule</a>
+    {% endif %}
+  </div>
+</div> 
+
 {% if user.is_authenticated %}
   Hi {{ user.username }}!
   <p><a href="{% url 'logout' %}">Log Out</a></p>
