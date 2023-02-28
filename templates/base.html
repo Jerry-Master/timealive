@@ -2,38 +2,71 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>{% block title %}Base title{% endblock %}</title>
 
   {% load static %}
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
-  <main>
+  <header>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+      <div class="container-fluid">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-mdb-toggle="collapse"
+          data-mdb-target="#navbarExample01"
+          aria-controls="navbarExample01"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarExample01">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            {% if is_home %}
+            <li class="nav-item active">
+            {% else %}
+            <li class="nav-item">
+            {% endif %}
+              <a class="nav-link" aria-current="page" href="/">Home</a>
+            </li>
+            
+            {% if is_viz %}
+            <li class="nav-item active">
+            {% else %}
+            <li class="nav-item">
+            {% endif %}
+              <a class="nav-link" href="/viz">Viz</a>
+            </li>
 
-    <div class="header">
-      <a href="/" class="logo">CompanyLogo</a>
-      <div class="header-right">
-        {% if is_home %}
-          <a class="active" href="/">Home</a>
-        {% else %}
-          <a href="/">Home</a>
-        {% endif %}
-        {% if is_viz %}
-          <a class="active" href="/viz">Viz</a>
-        {% else %}
-          <a href="/viz">Viz</a>
-        {% endif %}
-        {% if is_schedule %}
-          <a class="active" href="/schedule">Schedule</a>
-        {% else %}
-          <a href="/schedule">Schedule</a>
-        {% endif %}
+            {% if is_schedule %}
+            <li class="nav-item active">
+            {% else %}
+            <li class="nav-item">
+            {% endif %}
+              <a class="nav-link" href="/schedule">Schedule</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div> 
-
+    </nav>
+    <!-- Navbar -->
+  </header>
+  
+  <!-- Jumbotron -->
+  <div class="p-5 text-center bg-light" style="margin-top: 58px;">
     {% block content %}
     {% endblock %}
-  </main>
+  </div>
+  <!-- Jumbotron -->
+  
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
