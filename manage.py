@@ -35,7 +35,9 @@ def main():
 
 
 if __name__ == '__main__':
-    p = Process(target=launch_streamlit)
-    p.start()
+    if sys.argv[1] == 'runserver':
+        p = Process(target=launch_streamlit)
+        p.start()
     main()
-    p.join()
+    if sys.argv[1] == 'runserver':
+        p.join()
