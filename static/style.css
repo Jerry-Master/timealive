@@ -1,7 +1,154 @@
+body {
+  font-family: 'Raleway', sans-serif;
+  min-height: 100%;
+}
+
+nav {
+  background-color: rgb(211, 211, 211);
+}
+
+nav * .nav-link:hover {
+  color: rgb(171, 171, 171);
+}
+
+nav * .nav-link:focus {
+  color: white;
+}
+
+nav * .nav-link {
+  color: rgb(48, 49, 50);
+}
+
+.input-search{
+  border-style: none;
+  letter-spacing: 2px;
+  outline: none;
+  color: rgb(130, 130, 130);
+  width: 100%;
+  border-radius: 0px;
+  background-color: transparent;
+}
+
+.search-top-css {
+  display: flex;
+  border-bottom:1px solid rgba(255,255,255,.5);
+}
+
+.search-css {
+  flex-shrink: 0;
+  height: .9em;
+  max-height: 50px;
+  max-width: 50px;
+  min-height: 14px;
+  min-width: 14px;
+  width: .9em;
+  padding-right: 5px;
+}
+
+header {
+  background-color: rgb(35, 91, 83);
+}
+
+header * .nav-link:hover {
+  color: rgb(161, 194, 201);
+}
+
+header * .nav-link:focus {
+  color: white;
+}
+
+header * .nav-link {
+  color: rgb(211, 211, 211);
+}
+
+header * span {
+  color: rgb(211, 211, 211);
+}
+
+.small-text {
+  font-size: 0.5rem;
+}
+
+.med-text {
+  font-size: 0.8rem;
+}
+
+.spaced {
+  letter-spacing: 0.3em;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
+.content {
+  padding-top: 170px;
+}
+
+
+footer {
+  background-color: rgb(48, 49, 50);
+  padding-top: 20px;
+}
+
+footer * span {
+  color: rgb(206, 206, 206);
+}
+
+footer * p {
+  padding-top: 15px;
+  color: rgb(240, 240, 240);
+}
+
+.hor-list {
+  float: left;
+}
+.hor-ul {
+  list-style: none;
+  padding-top: 20px;
+}
+
+.foot-input {
+  width: 100%;
+  padding-top: 10px;
+}
+.foot-input > input {
+  padding: 5px;
+}
+.foot-button {
+  width: 100%;
+  padding-top: 10px;
+}
+.foot-button > button {
+  border: none;
+  text-decoration: none;
+  display: inline-block;
+  padding: 5px;
+  background-color: rgb(211, 211, 211);
+  color: rgb(54, 55, 56);
+}
+.foot-button > button:hover {
+  background-color: rgb(241, 241, 241);
+}
+
+.fill {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width:100%
+}
+
+.copyright {
+  margin: 20px;
+}
+
+
 .iframe_container {
   display: flex;
   width: 100%;
-  height: 80vh;
+  height: 100vh;
   flex-direction: column;
   background-color: blue;
   overflow: hidden;
