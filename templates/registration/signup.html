@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign up{% endblock %}
+
+{% block content %}
+<div class="content">
+    <form action="{% url 'signup:index' %}" method="post">
+        {% csrf_token %}
+        <label for="username">Nombre de usuario:</label>
+        <input type="text" name="username" id="username">
+        {% if form.username.errors %}
+            {% for error in form.username.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        {% endif %}
+        <label for="password1">Contraseña:</label>
+        <input type="password" name="password1" id="password1">
+        {% if form.password1.errors %}
+            {% for error in form.password1.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        {% endif %}
+        <label for="password2">Repite contraseña:</label>
+        <input type="password" name="password2" id="password2">
+        {% if form.password2.errors %}
+            {% for error in form.password2.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        {% endif %}
+        <input type="submit" value="Registrarse">
+
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        {% endif %}
+    </form>
+</div>
+{% endblock %}

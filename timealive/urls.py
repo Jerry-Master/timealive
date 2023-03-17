@@ -24,6 +24,7 @@ urlpatterns = [
     path('schedule/', include('schedule.urls')),
     path('admin/', admin.site.urls),
     path("accounts/", include("django.contrib.auth.urls")),
+    path('signup/', include('signup.urls')),
     path('', TemplateView.as_view(
         template_name='home.html',
         extra_context={
