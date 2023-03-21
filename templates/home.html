@@ -68,3 +68,8 @@
   </footer>
   <!-- Footer -->
 {% endblock %}
+
+{% block extra_css %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'footer.css' %}">
+{% endblock %}

@@ -12,3 +12,8 @@
   </form>
 </div>
 {% endblock %}
+
+{% block extra_css %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
+{% endblock %}

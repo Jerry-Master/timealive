@@ -1,0 +1,57 @@
+footer {
+    margin-top: auto;
+    background-color: rgb(48, 49, 50);
+    color: #fff;
+    padding: 20px;
+}
+  
+footer * span {
+    color: rgb(206, 206, 206);
+}
+  
+footer * p {
+    padding-top: 15px;
+    color: rgb(240, 240, 240);
+}
+  
+.hor-list {
+    float: left;
+}
+.hor-ul {
+    list-style: none;
+    padding-top: 20px;
+}
+  
+.foot-input {
+    width: 100%;
+    padding-top: 10px;
+}
+.foot-input > input {
+    padding: 5px;
+}
+.foot-button {
+    width: 100%;
+    padding-top: 10px;
+}
+.foot-button > button {
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    padding: 5px;
+    background-color: rgb(211, 211, 211);
+    color: rgb(54, 55, 56);
+}
+.foot-button > button:hover {
+    background-color: rgb(241, 241, 241);
+}
+  
+.fill {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width:100%
+}
+  
+.copyright {
+    margin: 20px;
+}
