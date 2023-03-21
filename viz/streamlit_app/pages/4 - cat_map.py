@@ -8,11 +8,11 @@ st.title('Visits_dataset')
 
 DATE_COLUMN = 'date/time'
 STREAMLIT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_PATH = os.path.join(STREAMLIT_DIR, 'data', 'coordenadas_centros_salud.csv')
+DATA_PATH = os.path.join(STREAMLIT_DIR, 'data', 'visites_coord.csv')
 
 def load_data(nrows):
 	'''plain old function that downloads some data, puts it in a Pandas dataframe, and converts the date column from text to datetime'''
-	data = pd.read_csv(DATA_PATH, nrows=10000) #llegeix les dades
+	data = pd.read_csv(DATA_PATH, nrows=nrows, encoding='latin') #llegeix les dades
 	#lowercase = lambda x: str(x).lower() #defineix la funció per pasar dades a minuscules
 	#data.rename(lowercase, axis='columns', inplace=True) #fa un renaming de les dades a minuscules
 	#data[DATE_COLUMN] = pd.to_datetime(data[DATE_COLUMN]) #transforma les dades a fechas (datetime)
