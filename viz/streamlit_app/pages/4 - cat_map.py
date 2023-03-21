@@ -1,12 +1,14 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import os
 
 
 st.title('Visits_dataset')
 
 DATE_COLUMN = 'date/time'
-DATA_PATH = ('C:/Users/USER/Documents/upc/sexto semestre/PE/visites_coord.csv')
+STREAMLIT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA_PATH = os.path.join(STREAMLIT_DIR, 'data', 'coordenadas_centros_salud.csv')
 
 def load_data(nrows):
 	'''plain old function that downloads some data, puts it in a Pandas dataframe, and converts the date column from text to datetime'''
