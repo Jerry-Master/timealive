@@ -30,8 +30,8 @@
       <tr>
         <td>{{ hour }}</td>
         {% for day in days %}
-          {% if appointments|get_item:day|get_item:hour %}
-          <td>{{ appointments|get_item:day|get_item:hour }}</td>
+          {% if appointments|get_item_nested:day|get_item:hour %}
+          <td>{{ appointments|get_item_nested:day|get_item:hour }}</td>
           {% else %}
           <td></td>
           {% endif %}
