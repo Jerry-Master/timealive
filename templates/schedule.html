@@ -2,6 +2,43 @@
 
 {% block title %}Schedule{% endblock %}
 
+{% load custom_filters %}
 {% block content %}
-Now on schedule index.
+<div class="container">
+  <h1>Physician Schedule</h1>
+  <form method="POST">
+    {% csrf_token %}
+    <label for="weeks">Move schedule by</label>
+    <input type="number" id="weeks" name="weeks" value="1">
+    <button type="submit" name="action" value="back">Back</button>
+    <button type="submit" name="action" value="forward">Forward</button>
+  </form>
+  
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Time</th>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for hour in hours %}
+      <tr>
+        <td>{{ hour }}</td>
+        {% for day in days %}
+          {% if appointments|get_item:day|get_item:hour %}
+          <td>{{ appointments|get_item:day|get_item:hour }}</td>
+          {% else %}
+          <td></td>
+          {% endif %}
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 {% endblock %}
