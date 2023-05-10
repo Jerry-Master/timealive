@@ -62,10 +62,15 @@ class Appointment(models.Model):
     TYPE_CHOICES = (
         ('C', _('Chronic')),
         ('N', _('Normal')),
+        ('9C', _('9C')),
+        ('9T', _('9T')),
+        ('9R', _('9R')),
+        ('9E', _('9E')),
+        ('9D', _('9D')),
     )
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
-    type = models.CharField(max_length=1, choices=TYPE_CHOICES, default='N')
+    type = models.CharField(max_length=2, choices=TYPE_CHOICES, default='N')
     physician = models.ForeignKey(Physician, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 

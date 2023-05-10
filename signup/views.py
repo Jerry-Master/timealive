@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from django.shortcuts import render
 from .forms import SignupForm
+from schedule.models import Physician
 
 
 def index(request):
@@ -14,6 +15,8 @@ def index(request):
             password = form.cleaned_data['password1']
             user = User.objects.create_user(username=username, password=password)
             user.save()
+            physician = Physician.objects.create(user=user, name='JPC')
+            physician.save()
             return HttpResponseRedirect(reverse('home'))
         else:
             print('error')

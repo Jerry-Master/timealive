@@ -18,7 +18,7 @@ for week_start_date in week_start_dates:
 
 
 # Get the user object for the physician
-user = User.objects.get(username='jose')
+user = User.objects.get(username='JPC')
 physician = Physician.objects.get(user=user)
 
 # Generate some random appointments for the physician
@@ -26,11 +26,11 @@ start_date = datetime(year=year.year, month=1, day=1)
 end_date = datetime(year=year.year, month=12, day=31)
 time_delta = timedelta(minutes=30)
 
-for i in range(50):
+for i in range(200):
     start_time = start_date + timedelta(days=random.randint(0, 365), hours=random.randint(8, 16))
     end_time = start_time + time_delta * random.randint(1, 6)
-    appointment_type = random.choice(['C', 'N'])
+    appointment_type = random.choice(['9C', '9T', '9R', '9E', '9D'])
     appointment = Appointment.objects.create(start_time=start_time, end_time=end_time, type=appointment_type, physician=physician, user=user)
     week_start_date = appointment.start_time - timedelta(days=appointment.start_time.weekday())
-    week_obj = Week.objects.get(week_start_date=week_start_date)
+    week_obj = Week.objects.filter(week_start_date=week_start_date)[0]
     week_obj.appointments.add(appointment)
