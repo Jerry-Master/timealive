@@ -106,3 +106,34 @@ header * span {
   z-index: 100;
   background-color: #fff;
 }
+
+#compute-schedules-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  margin: auto;
+  margin-top: 25vh;
+  margin-bottom: 25vh;
+  background-color: rgb(35, 91, 83);
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+}
+
+#loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  width: 100vw;
+  margin-top: 25vh;
+  margin-bottom: 25vh;
+}
+
+#loading img {
+  display: block;
+  margin: auto;
+}
