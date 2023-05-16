@@ -25,44 +25,7 @@ data = [
     {"Codi EAP": 8117, "Nombre del CAP": "EAP RIBES-OLIVELLA", "SAP nom": "Alt Penedès Garraf", "Codi SAP": 17, "latitude": 41.2292796, "longitude": 1.7459127}
 ]
 
+st.title('Map EAPS')
+st.subheader('ICS - South Metropolitan Region')
+
 st.map(data)
-
-# Add tooltips to display information on hover
-for entry in data:
-    name = entry['Nombre del CAP']
-    lat = entry['latitude']
-    lon = entry['longitude']
-    tooltip = f"Nombre del CAP: {name}"
-    st.write(f"* Latitude: {lat}, Longitude: {lon}", unsafe_allow_html=True, key=tooltip)
-
-
-# Data
-data1 = {
-    'Mes': [1, 2, 3],
-    'BASELINE_LONGITUDINALITAT': [0, 0.441734766, 0.441734766],
-    'MODEL_LONGITUDINALITAT': [1.0, 1.0, 1.0]
-}
-
-# Create a DataFrame
-df1 = pd.DataFrame(data1)
-
-data2 = {
-    'Mes': [1, 2, 3],
-    'BASELINE_TEMPS_ESPERA': [2.1840, 1.9352701, 1.9352701],
-    'MODEL_TEMPS_ESPERA': [0.3585, 0.0, 0.0]
-}
-
-# Create a DataFrame
-df2 = pd.DataFrame(data2)
-
-# Set the 'Mes' column as the index
-df1.set_index('Mes', inplace=True)
-df2.set_index('Mes', inplace=True)
-
-
-# Create two columns for the line charts
-col1, col2 = st.beta_columns(2)
-
-# Create the chart
-st.line_chart(df1)
-st.line_chart(df2)

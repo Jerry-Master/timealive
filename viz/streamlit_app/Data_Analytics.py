@@ -72,8 +72,8 @@ ax3.set_title('Number of Visits per Type')
 ax3.set_xticklabels(sorted_visit_types, rotation=90)
 
 # Add color labels to the legend
-legend_labels = [f'{visit_type}: {number_of_visits:.2f}%' for visit_type, number_of_visits in zip(sorted_visit_types, sorted_number_of_visits)]
-ax3.legend(bars, legend_labels)
+#legend_labels = [f'{visit_type}: {number_of_visits:.2f}%' for visit_type, number_of_visits in zip(sorted_visit_types, sorted_number_of_visits)]
+#ax3.legend(bars, legend_labels)
 
 import streamlit as st
 import matplotlib.pyplot as plt
@@ -103,9 +103,10 @@ values = list(data.values())
 
 # Create a pie chart
 fig4, ax4 = plt.subplots()
-ax4.pie(values, labels=labels, autopct='%1.1f%%', startangle=90)
+ax4.pie(values, labels=labels, startangle=90)
 ax4.set_aspect('equal')  # Equal aspect ratio ensures that pie is drawn as a circle
 ax4.set_title('Type of Visits')
+#autopct='%1.1f%%'
 
 # Display the plots using Streamlit
 st.pyplot(fig1)
