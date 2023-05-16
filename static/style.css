@@ -122,6 +122,15 @@ header * span {
   border: none;
   border-radius: 4px;
 }
+#frw-btn, #bk-btn {
+  margin: auto;
+  background-color: rgb(35, 91, 83);
+  color: white;
+  padding: 5px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+}
 
 #loading {
   display: flex;

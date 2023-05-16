@@ -10,9 +10,10 @@
     {% csrf_token %}
     <label for="weeks">Move schedule by</label>
     <input type="number" id="weeks" name="weeks" value="1">
-    <button type="submit" name="action" value="back">Back</button>
-    <button type="submit" name="action" value="forward">Forward</button>
+    <button type="submit" name="action" value="back" id="frw-btn">Back</button>
+    <button type="submit" name="action" value="forward" id="bk-btn">Forward</button>
   </form>
+  Current week: {{ start_date }} / {{ end_date }}
   
   <table class="table table-bordered">
     <thead>

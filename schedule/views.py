@@ -45,6 +45,6 @@ def schedule(request, weeks_delta=1):
         'days': days,
         'appointments': appointment_data,
         'start_date': start_date,
-        'end_date': end_date,
+        'end_date': end_date - timedelta(days=1),
     }
     return render(request, 'schedule.html', context)
