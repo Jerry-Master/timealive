@@ -26,7 +26,7 @@ start_date = datetime(year=year.year, month=1, day=1)
 end_date = datetime(year=year.year, month=12, day=31)
 time_delta = timedelta(minutes=30)
 
-for i in range(200):
+for i in range(20000):
     start_time = start_date + timedelta(days=random.randint(0, 365), hours=random.randint(8, 16))
     end_time = start_time + time_delta * random.randint(1, 6)
     appointment_type = random.choice(['9C', '9T', '9R', '9E', '9D'])
