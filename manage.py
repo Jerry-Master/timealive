@@ -10,7 +10,7 @@ def launch_streamlit():
         'viz',
         'streamlit_app',
     )
-    filename = os.path.join(dirname, 'BuLiAn.py')
+    filename = os.path.join(dirname, 'Data_Analytics.py')
 
     sys.argv = ["streamlit", "run", filename, '--server.headless', 'true']; 
     runpy.run_module("streamlit", run_name="__main__")
