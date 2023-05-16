@@ -1,232 +1,68 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import folium
 
-def intro():
-    import streamlit as st
+# Data
+data = [
+    {"Codi EAP": 151, "Nombre del CAP": "EAP CORNELLÀ DE LLOBREGAT 1 MARTÍ JULIÀ", "SAP nom": "Baix Llobregat Centre", "Codi SAP": 13, "latitude": 41.3535, "longitude": 2.06662},
+    {"Codi EAP": 153, "Nombre del CAP": "EAP CORNELLÀ DE LLOBREGAT 3 GAVARRA", "SAP nom": "Baix Llobregat Centre", "Codi SAP": 13, "latitude": 41.35561, "longitude": 2.07043},
+    {"Codi EAP": 161, "Nombre del CAP": "EAP HOSPITALET DE LLOBREGAT 10 CAN SERRA", "SAP nom": "Delta litoral", "Codi SAP": 57, "latitude": 41.3661, "longitude": 2.09997},
+    {"Codi EAP": 170, "Nombre del CAP": "EAP PENEDÈS RURAL", "SAP nom": "Alt Penedès Garraf", "Codi SAP": 17, "latitude": 41.3444241, "longitude": 1.6995284},
+    {"Codi EAP": 172, "Nombre del CAP": "EAP EL PRAT DE LLOBREGAT 2 SANT COSME I", "SAP nom": "Delta litoral", "Codi SAP": 57, "latitude": 41.3160855, "longitude": 2.0867355},
+    {"Codi EAP": 173, "Nombre del CAP": "EAP EL PRAT LLOBREGAT 3 PUJOL I CAPÇADA", "SAP nom": "Delta litoral", "Codi SAP": 57, "latitude": 41.32784, "longitude": 2.09472},
+    {"Codi EAP": 176, "Nombre del CAP": "EAP SANT BOI DE LLOBREGAT 3 CAMPS BLANCS", "SAP nom": "Baix Llobregat Centre", "Codi SAP": 13, "latitude": 41.3376973, "longitude": 2.0295362},
+    {"Codi EAP": 177, "Nombre del CAP": "EAP SANT JOAN DESPÍ 2 LES PLANES", "SAP nom": "Baix Llobregat Centre", "Codi SAP": 13, "latitude": 41.3671859, "longitude": 2.0730109},
+    {"Codi EAP": 183, "Nombre del CAP": "EAP VILADECANS 2", "SAP nom": "Delta litoral", "Codi SAP": 57, "latitude": 41.3163083, "longitude": 2.0156034},
+    {"Codi EAP": 193, "Nombre del CAP": "EAP HOSPITALET LLOBREGAT 9 PUBILLA CASES", "SAP nom": "Delta litoral", "Codi SAP": 57, "latitude": 41.3734592, "longitude": 2.1063928},
+    {"Codi EAP": 197, "Nombre del CAP": "EAP SANT BOI DE LLOBREGAT 1 MONTCLAR", "SAP nom": "Baix Llobregat Centre", "Codi SAP": 13, "latitude": 41.3446122, "longitude": 2.0381487},
+    {"Codi EAP": 200, "Nombre del CAP": "EAP SANT FELIU DE LLOBREGAT 2 RAMBLA", "SAP nom": "Baix Llobregat Centre", "Codi SAP": 13, "latitude": 41.3831529, "longitude": 2.0504115},
+    {"Codi EAP": 206, "Nombre del CAP": "EAP VILANOVA I LA GELTRÚ 2", "SAP nom": "Alt Penedès Garraf", "Codi SAP": 17, "latitude": 41.2241992, "longitude": 1.7256327},
+    {"Codi EAP": 4546, "Nombre del CAP": "EAP ABRERA", "SAP nom": "Baix Llobregat Nord", "Codi SAP": 16, "latitude": 41.5204464, "longitude": 1.9024126},
+    {"Codi EAP": 4819, "Nombre del CAP": "EAP MARTORELL RURAL", "SAP nom": "Baix Llobregat Nord", "Codi SAP": 16, "latitude": 41.47402, "longitude": 1.93062},
+    {"Codi EAP": 5239, "Nombre del CAP": "EAP BEGUES. POU TORRE", "SAP nom": "Delta litoral", "Codi SAP": 57, "latitude": 41.3328119, "longitude": 1.925468},
+    {"Codi EAP": 7961, "Nombre del CAP": "EAP VILAFRANCA DEL PENEDÈS 1", "SAP nom": "Alt Penedès Garraf", "Codi SAP": 17, "latitude": 41.3530923, "longitude": 1.7068573},
+    {"Codi EAP": 8117, "Nombre del CAP": "EAP RIBES-OLIVELLA", "SAP nom": "Alt Penedès Garraf", "Codi SAP": 17, "latitude": 41.2292796, "longitude": 1.7459127}
+]
 
-    st.write("# Welcome to Streamlit! 👋") #titulo
-    st.sidebar.success("Select a demo above.") #barra lateral izquierda en fondo verde
+st.map(data)
 
-    st.markdown(
-        """
-        Streamlit is an open-source app framework built specifically for
-        Machine Learning and Data Science projects.
-
-        **👈 Select a demo from the dropdown on the left** to see some examples
-        of what Streamlit can do! 
-
-        ### Want to learn more?
-
-        - Check out [streamlit.io](https://streamlit.io)
-        - Jump into our [documentation](https://docs.streamlit.io)
-        - Ask a question in our [community
-          forums](https://discuss.streamlit.io)
-
-        ### See more complex demos
-
-        - Use a neural net to [analyze the Udacity Self-driving Car Image
-          Dataset](https://github.com/streamlit/demo-self-driving)
-        - Explore a [New York City rideshare dataset](https://github.com/streamlit/demo-uber-nyc-pickups)
-    """
-    )
-
-def mapping_demo():
-    import streamlit as st
-    import pandas as pd
-    import pydeck as pdk
-
-    from urllib.error import URLError
-
-    st.markdown(f"# {list(page_names_to_funcs.keys())[2]}")
-    st.write(
-        """
-        This demo shows how to use
-[`st.pydeck_chart`](https://docs.streamlit.io/library/api-reference/charts/st.pydeck_chart)
-to display geospatial data.
-"""
-    )
-
-    @st.cache_data
-    def from_data_file(filename):
-        url = (
-            "http://raw.githubusercontent.com/streamlit/"
-            "example-data/master/hello/v1/%s" % filename
-        )
-        return pd.read_json(url)
-
-    try:
-        ALL_LAYERS = {
-            "Bike Rentals": pdk.Layer(
-                "HexagonLayer",
-                data=from_data_file("bike_rental_stats.json"),
-                get_position=["lon", "lat"],
-                radius=200,
-                elevation_scale=4,
-                elevation_range=[0, 1000],
-                extruded=True,
-            ),
-            "Bart Stop Exits": pdk.Layer(
-                "ScatterplotLayer",
-                data=from_data_file("bart_stop_stats.json"),
-                get_position=["lon", "lat"],
-                get_color=[200, 30, 0, 160],
-                get_radius="[exits]",
-                radius_scale=0.05,
-            ),
-            "Bart Stop Names": pdk.Layer(
-                "TextLayer",
-                data=from_data_file("bart_stop_stats.json"),
-                get_position=["lon", "lat"],
-                get_text="name",
-                get_color=[0, 0, 0, 200],
-                get_size=15,
-                get_alignment_baseline="'bottom'",
-            ),
-            "Outbound Flow": pdk.Layer(
-                "ArcLayer",
-                data=from_data_file("bart_path_stats.json"),
-                get_source_position=["lon", "lat"],
-                get_target_position=["lon2", "lat2"],
-                get_source_color=[200, 30, 0, 160],
-                get_target_color=[200, 30, 0, 160],
-                auto_highlight=True,
-                width_scale=0.0001,
-                get_width="outbound",
-                width_min_pixels=3,
-                width_max_pixels=30,
-            ),
-        }
-        st.sidebar.markdown("### Map Layers")
-        selected_layers = [
-            layer
-            for layer_name, layer in ALL_LAYERS.items()
-            if st.sidebar.checkbox(layer_name, True)
-        ]
-        if selected_layers:
-            st.pydeck_chart(
-                pdk.Deck(
-                    map_style="mapbox://styles/mapbox/light-v9",
-                    initial_view_state={
-                        "latitude": 37.76,
-                        "longitude": -122.4,
-                        "zoom": 11,
-                        "pitch": 50,
-                    },
-                    layers=selected_layers,
-                )
-            )
-        else:
-            st.error("Please choose at least one layer above.")
-    except URLError as e:
-        st.error(
-            """
-            **This demo requires internet access.**
-
-            Connection error: %s
-        """
-            % e.reason
-        )
-
-def plotting_demo():
-    import streamlit as st
-    import time
-    import numpy as np
-
-    st.markdown(f'# {list(page_names_to_funcs.keys())[1]}')
-    st.write(
-        """
-        This demo illustrates a combination of plotting and animation with
-Streamlit. We're generating a bunch of random numbers in a loop for around
-5 seconds. Enjoy!
-"""
-    )
-
-    progress_bar = st.sidebar.progress(0)
-    status_text = st.sidebar.empty()
-    last_rows = np.random.randn(1, 1)
-    chart = st.line_chart(last_rows)
-
-    for i in range(1, 101):
-        new_rows = last_rows[-1, :] + np.random.randn(5, 1).cumsum(axis=0)
-        status_text.text("%i%% Complete" % i)
-        chart.add_rows(new_rows)
-        progress_bar.progress(i)
-        last_rows = new_rows
-        time.sleep(0.05)
-
-    progress_bar.empty()
-
-    # Streamlit widgets automatically run the script from top to bottom. Since
-    # this button is not connected to any other logic, it just causes a plain
-    # rerun.
-    st.button("Re-run")
+# Add tooltips to display information on hover
+for entry in data:
+    name = entry['Nombre del CAP']
+    lat = entry['latitude']
+    lon = entry['longitude']
+    tooltip = f"Nombre del CAP: {name}"
+    st.write(f"* Latitude: {lat}, Longitude: {lon}", unsafe_allow_html=True, key=tooltip)
 
 
-def data_frame_demo():
-    import streamlit as st
-    import pandas as pd
-    import altair as alt
-
-    from urllib.error import URLError
-
-    st.markdown(f"# {list(page_names_to_funcs.keys())[3]}")
-    st.write(
-        """
-        This demo shows how to use `st.write` to visualize Pandas DataFrames.
-
-(Data courtesy of the [UN Data Explorer](http://data.un.org/Explorer.aspx).)
-"""
-    )
-
-    @st.cache_data
-    def get_UN_data():
-        AWS_BUCKET_URL = "http://streamlit-demo-data.s3-us-west-2.amazonaws.com"
-        df = pd.read_csv(AWS_BUCKET_URL + "/agri.csv.gz")
-        return df.set_index("Region")
-
-    try:
-        df = get_UN_data()
-        countries = st.multiselect(
-            "Choose countries", list(df.index), ["China", "United States of America"]
-        )
-        if not countries:
-            st.error("Please select at least one country.")
-        else:
-            data = df.loc[countries]
-            data /= 1000000.0
-            st.write("### Gross Agricultural Production ($B)", data.sort_index())
-
-            data = data.T.reset_index()
-            data = pd.melt(data, id_vars=["index"]).rename(
-                columns={"index": "year", "value": "Gross Agricultural Product ($B)"}
-            )
-            chart = (
-                alt.Chart(data)
-                .mark_area(opacity=0.3)
-                .encode(
-                    x="year:T",
-                    y=alt.Y("Gross Agricultural Product ($B):Q", stack=None),
-                    color="Region:N",
-                )
-            )
-            st.altair_chart(chart, use_container_width=True)
-    except URLError as e:
-        st.error(
-            """
-            **This demo requires internet access.**
-
-            Connection error: %s
-        """
-            % e.reason
-        )
-
-page_names_to_funcs = {
-    "—": intro,
-    "Plotting Demo": plotting_demo,
-    "Mapping Demo": mapping_demo,
-    "DataFrame Demo": data_frame_demo
+# Data
+data1 = {
+    'Mes': [1, 2, 3],
+    'BASELINE_LONGITUDINALITAT': [0, 0.441734766, 0.441734766],
+    'MODEL_LONGITUDINALITAT': [1.0, 1.0, 1.0]
 }
 
-demo_name = st.sidebar.selectbox("Choose a demo", page_names_to_funcs.keys())
-page_names_to_funcs[demo_name]()
+# Create a DataFrame
+df1 = pd.DataFrame(data1)
+
+data2 = {
+    'Mes': [1, 2, 3],
+    'BASELINE_TEMPS_ESPERA': [2.1840, 1.9352701, 1.9352701],
+    'MODEL_TEMPS_ESPERA': [0.3585, 0.0, 0.0]
+}
+
+# Create a DataFrame
+df2 = pd.DataFrame(data2)
+
+# Set the 'Mes' column as the index
+df1.set_index('Mes', inplace=True)
+df2.set_index('Mes', inplace=True)
+
+
+# Create two columns for the line charts
+col1, col2 = st.beta_columns(2)
+
+# Create the chart
+st.line_chart(df1)
+st.line_chart(df2)
