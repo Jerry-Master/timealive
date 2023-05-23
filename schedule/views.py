@@ -46,5 +46,12 @@ def schedule(request, weeks_delta=1):
         'appointments': appointment_data,
         'start_date': start_date,
         'end_date': end_date - timedelta(days=1),
+        'color': {
+            '9C': '#8dd3c7',
+            '9D': '#ffffb3',
+            '9E': '#bebada',
+            '9R': '#fb8072',
+            '9T': '#80b1d3'
+        },
     }
     return render(request, 'schedule.html', context)
